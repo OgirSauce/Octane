@@ -5,6 +5,22 @@
     --white-color:#fdfdfd;
 }
 
+.odd{
+    font-weight: 100;
+}
+
+.even{
+    font-weight: bold;
+}
+
+.logoFont{
+    font-family: 'Mansalva', cursive;
+}
+
+.bodyFont{
+    font-family: 'Roboto', sans-serif;
+}
+
 body{
     color: var(--dark-color)
 }

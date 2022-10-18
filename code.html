@@ -2,7 +2,7 @@
 <html lang="en" class="h-100">
 
 <head>
-    <title>App Name: A Coding Project By Rigo Sosa</title>
+    <title class="bodyFont">OCTANE: A Coding Project By Rigo Sosa</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -16,6 +16,15 @@
     <link href="css/site.css" rel="stylesheet">
     <link href="css/prism.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="img/favicon-32x32.png">
+
+    <!--Chiller/Mansalva Text CSS-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mansalva&display=swap" rel="stylesheet">
+    <!--Body font/Roboto-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mansalva&family=Roboto&display=swap" rel="stylesheet">
  
 </head>
 
@@ -23,7 +32,7 @@
     <!-- === Nav Section === -->
     <nav   nav class="navbar navbar-expand-md navbar-dark fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img src="img/ICON2.svg" class="d-inline-block align-text-top" width="30" height="24"> APP NAME</a>
+            <a class="navbar-brand logoFont" href="#"><img src="img/ICON2.svg" class="d-inline-block align-text-top" width="30" height="24"> Octane</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -52,21 +61,93 @@
     <!-- === Main Section === -->
     <main class="flex-shrink-0">
         <div class="container py-5 px-5 mt-5">
-            <h2 class="border-1 border-bottom border-dark">The Code for APP NAME</h2>
+            <h2 class="border-1 border-bottom border-dark bodyFont">The Code for Octane</h2>
             <div class="row row-cols-1 row-cols-lg-2">
                 <div class="col-lg-8">
                     <pre class="line-numbers"><code class="language-javascript">
-                        //Call Hello World
-                        function helloWorld() {
-                            alert("hello World")
+                        //get the values from the UI
+                        //start or controller function
+                        function getValues(){
+                            //get values from the page
+                            let startValue = document.getElementById("startValue").value;
+                            let endValue = document.getElementById("endValue").value;
+                        
+                            //we need to validate our input
+                            //parse into intergers
+                            startValue = parseInt(startValue);
+                            endValue = parseInt(endValue);
+                        
+                            if (Number.isInteger(startValue) && Number.isInteger(endValue)){
+                                //we call generateNumbers
+                                let numbers = generateNumbers(startValue,endValue);
+                                //we call displayNumbers
+                                displayNumbers(numbers);
+                        
+                            }else{
+                                alert("You must enter integers")
+                            }
+                        
+                        }
+                        
+                        //generate number from startValue to the endValue
+                        //logic function(s)
+                        function generateNumbers(sValue, eValue){
+                        
+                            let numbers = [];
+                        
+                            //we want to get all numbers from start to end
+                        
+                            for (let index = sValue; index <= eValue; index++){
+                                //this will execute in a loop unil index = eValue
+                                numbers.push(index);
+                            }
+                        
+                            return numbers;
+                        
+                        }
+                        
+                        //display numbers and mark even numbers bold
+                        //display or view functions
+                        function displayNumbers(numbers) {
+                        
+                        
+                            let templateRows = "";
+                        
+                            for (let index = 0; index < numbers.length; index++) {
+                                
+                                let className = "even";
+                                let number = numbers[index];
+                        
+                                if(number % 2 == 0){
+                                    className = "even";
+                                }
+                                else{
+                                    className = "odd";
+                                }
+                                //This does render correctly with Prisim see the source
+                                templateRows += `<tr><td class="${className}">${number}</td></tr>`
+                                
+                            }
+                        
+                            document.getElementById("results").innerHTML = templateRows
+                        
                         }
                     </code>
                     </pre>
                 </div>
-                <div class="col-lg-4">
-                    <p>The Code is structed in one function</p>
-                    <h5>Hello World</h5>
-                    <p>Hello World is a function that diplays an alert with a message of "Hello World"</p>
+                <div class="col-lg-4 bodyFont">
+                    <p class="bodyFont">This code is structured in three functions.</p>
+                    <h3 class="logoFont">Octane</h3>
+                    <p class="bodyFont">Octane is a function that allows you to select a string of numbers from 0-100. It will display the numbers in a row with the even numbers in <strong>bold</strong>.</p>
+                    <p class="bodyFont">
+                        <strong>function getValues;</strong> is coded to obtain the starting and ending values inputs. The function converts those inputs into intergers using the perseINT funtion. If the user inputs anything other then an integer. There is an alert that will inform the user to place an integer.
+                    </p>
+                    <p class="bodyFont">
+                        <strong>function generateNumbers;</strong> is coded to generate the integers that need to apear acording to the inputs that where entered.
+                    </p>
+                    <p class="bodyFont">
+                        <strong>function displayNumbers;</strong> is coded to display the generated numbers. It's coded with <strong>class names</strong> to seperate the even and odd numbers. I use these class names in the css to assign a color to the end results. In this project I choose to display the even numbers in <strong>bold</strong>.
+                    </p>
                 </div>
             </div>
         </div>
